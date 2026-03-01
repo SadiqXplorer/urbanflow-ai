@@ -17,7 +17,7 @@ Unlike traditional navigation applications that only display real-time traffic, 
 
 This project is built as a Free & Open Source Software (FOSS) initiative.
 
----
+--
 
 # 🎯 Problem Statement
 
