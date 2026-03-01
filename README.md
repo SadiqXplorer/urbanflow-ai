@@ -19,7 +19,7 @@ This project is built as a Free & Open Source Software (FOSS) initiative.
 
 ---
 
-## 🎯 Problem Statement
+# 🎯 Problem Statement
 
 Urban congestion in Indian cities leads to:
 
