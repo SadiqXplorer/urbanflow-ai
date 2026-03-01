@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UrbanFlow AI</title>
 
   <!-- Leaflet CSS -->
@@ -10,107 +11,30 @@
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
   />
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    #map {
-      height: 100vh;
-      width: 100%;
-    }
-
-    .header {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      z-index: 1000;
-      background: white;
-      padding: 12px 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-
-    .header h2 {
-      margin: 0;
-    }
-
-    .legend {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      background: white;
-      padding: 10px;
-      border-radius: 6px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      font-size: 14px;
-    }
-
-    .legend div {
-      margin-bottom: 6px;
-    }
-
-    .box {
-      display: inline-block;
-      width: 15px;
-      height: 15px;
-      margin-right: 8px;
-    }
-  </style>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
-<div class="header">
-  <h2>🚦 UrbanFlow AI</h2>
-  <p>Urban Congestion Forecasting Platform</p>
-</div>
+  <div class="header">
+    <h2>🚦 UrbanFlow AI</h2>
+    <p>Urban Congestion Forecasting Platform</p>
+  </div>
 
-<div id="map"></div>
+  <div id="map"></div>
 
-<div class="legend">
-  <div><span class="box" style="background:red;"></span> High Congestion</div>
-  <div><span class="box" style="background:orange;"></span> Medium</div>
-  <div><span class="box" style="background:green;"></span> Low</div>
-</div>
+  <div class="legend">
+    <div><span class="box red"></span> High Congestion</div>
+    <div><span class="box orange"></span> Medium</div>
+    <div><span class="box green"></span> Low</div>
+  </div>
 
-<!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-<script>
-  // Initialize map
-  var map = L.map('map').setView([28.6139, 77.2090], 11); // Delhi
-
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
-
-  // Dummy congestion zones
-
-  // High congestion (Red)
-  L.circle([28.6304, 77.2177], {
-    color: 'red',
-    fillColor: 'red',
-    fillOpacity: 0.5,
-    radius: 1500
-  }).addTo(map).bindPopup("High Congestion Zone");
-
-  // Medium congestion (Orange)
-  L.circle([28.5500, 77.2500], {
-    color: 'orange',
-    fillColor: 'orange',
-    fillOpacity: 0.5,
-    radius: 2000
-  }).addTo(map).bindPopup("Medium Congestion Zone");
-
-  // Low congestion (Green)
-  L.circle([28.7000, 77.1000], {
-    color: 'green',
-    fillColor: 'green',
-    fillOpacity: 0.5,
-    radius: 2500
-  }).addTo(map).bindPopup("Low Congestion Zone");
-</script>
+  <!-- Custom JS -->
+  <script src="script.js"></script>
 
 </body>
 </html>
