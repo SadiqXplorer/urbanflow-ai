@@ -1,40 +1,47 @@
-// Initialize map (Delhi default)
+console.log("JS FILE LOADED");
+
+// Create map
 var map = L.map("map").setView([28.6139, 77.2090], 11);
 
-// Add OpenStreetMap tiles
+// Add map tiles
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  attribution: "&copy; OpenStreetMap contributors",
+    attribution: "© OpenStreetMap contributors"
 }).addTo(map);
 
 
-// Dummy Congestion Zones (for demo)
+// Fetch congestion data from backend
+fetch("http://127.0.0.1:8000/api/congestion")
+.then(res => res.json())
+.then(data => {
 
-// High Congestion
-L.circle([28.6304, 77.2177], {
-  color: "red",
-  fillColor: "red",
-  fillOpacity: 0.5,
-  radius: 1500,
-})
-  .addTo(map)
-  .bindPopup("High Congestion Zone");
+    console.log("DATA:", data);
 
-// Medium Congestion
-L.circle([28.5500, 77.2500], {
-  color: "orange",
-  fillColor: "orange",
-  fillOpacity: 0.5,
-  radius: 2000,
-})
-  .addTo(map)
-  .bindPopup("Medium Congestion Zone");
+    // loop through zones
+    data.zones.forEach(zone => {
 
-// Low Congestion 
-L.circle([28.7000, 77.1000], {
-  color: "green",
-  fillColor: "green",
-  fillOpacity: 0.5,
-  radius: 2500,
+        let color;
+
+        if(zone.level === "high"){
+            color = "red";
+        }
+        else if(zone.level === "medium"){
+            color = "orange";
+        }
+        else{
+            color = "green";
+        }
+
+        // draw circle
+        L.circle([zone.lat, zone.lng], {
+            color: color,
+            fillColor: color,
+            fillOpacity: 0.5,
+            radius: 900
+        })
+        .addTo(map)
+        .bindPopup(zone.name + " : " + zone.level);
+
+    });
+
 })
-  .addTo(map)
-  .bindPopup("Low Congestion Zone");
+.catch(err => console.error(err));
