@@ -15,7 +15,7 @@ fetch("http://127.0.0.1:8000/api/congestion")
 .then(data => {
 
     console.log("DATA:", data);
-
+ //new version 
     // loop through zones
     data.zones.forEach(zone => {
 
